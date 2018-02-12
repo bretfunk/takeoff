@@ -8,7 +8,7 @@ contract CampaignFactory {
     takeoff = msg.sender;
   }
 
-  function createCampaign(string _description, uint _moneyGoal, uint _timeGoal, address _takeoff) {
+  function createCampaign(string _description, uint _moneyGoal, uint _timeGoal) {
     address newCampaign = new Campaign(_description, _moneyGoal, _timeGoal, takeoff, msg.sender);
     campaigns.push(newCampaign);
   }
