@@ -22,7 +22,7 @@ beforeEach(async () => {
 
   //create campaign
   await factory.methods.createCampaign(
-    "test campaign to raise money", 5000000, 5
+    "test campaign to raise money", 5000000, -1
   ).send({ from: accounts[1], gas: 3000000 })
 
   campaignAddress = await factory.methods.campaigns(0).call()
@@ -53,35 +53,113 @@ describe('Campaign', async () => {
     assert.equal(allCampaigns.length, 1);
   })
 
+  const oneEther = web3.utils.toWei('1', 'ether')
+
   it('contributor can contribute to a campaign', async () => {
     await campaign.methods.contribute().send({
       from: accounts[2],
-      gas: '1000000'
+      gas: '1000000',
+      value: oneEther
     })
 
-    //correct way to access values?
-    //const balance = campaign.values.balance().call()
-    //assert.equal(balance, 1000000)
-
-    //const contributors = campaign.methods.contributors().get()
-    ////got zero params expected one?
-    //assert.equal(contributors.length, 1);
+    const balance = await campaign.methods.balance().call()
+    assert.equal(balance, oneEther)
   })
 
-  it('', async () => {
+  it('campaign can disburse funds with achieved goal', async () => {
+    await campaign.methods.contribute().send({
+      from: accounts[2],
+      gas: '1000000',
+      value: oneEther
+    })
+
+    await campaign.methods.contribute().send({
+      from: accounts[3],
+      gas: '1000000',
+      value: oneEther
+    })
+
+    const balance = await campaign.methods.balance().call()
+    assert.equal(balance, oneEther * 2)
+
+    await campaign.methods.disburseFunds().send({
+      from: accounts[0],
+      gas: '3000000'
+    })
+
+    const startBalance = await web3.utils.toWei('10', 'ether');
+    const afterDisbursion = await web3.eth.getBalance(accounts[1])
+    assert(afterDisbursion > startBalance);
+  })
+
+  it('campaign can disburse funds with unachieved goal', async () => {
+    await campaign.methods.contribute().send({
+      from: accounts[2],
+      gas: '1000000',
+      value: '1000000'
+    })
+
+    await campaign.methods.contribute().send({
+      from: accounts[3],
+      gas: '1000000',
+      value: '1000000'
+    })
+
+    const balance = await campaign.methods.balance().call()
+    assert.equal(balance, 2000000)
+
+    await campaign.methods.disburseFunds().send({
+      from: accounts[0],
+      gas: '3000000'
+    })
+
+    const startBalance = await web3.utils.toWei('10', 'ether');
+    const bobAfterDisbursion = await web3.eth.getBalance(accounts[2])
+    const aliceAfterDisbursion = await web3.eth.getBalance(accounts[3])
+
+    assert(await bobAfterDisbursion > startBalance);
+    assert(await aliceAfterDisbursion > startBalance);
 
   })
 
-  it('', async () => {
+  it('disbursion cannot happen before time limit', async () => {
+    //need new campaign to test time, tests above were set at -1 days to trick async await
+      await factory.methods.createCampaign(
+        "test campaign to raise money", 5000000, 5
+      ).send({ from: accounts[1], gas: 3000000 })
 
-  })
+    campaignAddress = await factory.methods.campaigns(1).call()
+    //
+    campaign = await new web3.eth.Contract(
+      JSON.parse(compiledCampaign.interface
+      ), campaignAddress);
 
-  it('', async () => {
+    await campaign.setProvider(provider);
 
-  })
+    await campaign.methods.contribute().send({
+      from: accounts[2],
+      gas: '1000000',
+      value: oneEther
+    })
 
-  it('', async () => {
+    await campaign.methods.contribute().send({
+      from: accounts[3],
+      gas: '1000000',
+      value: oneEther
+    })
 
+    const balance = await campaign.methods.balance().call()
+    assert.equal(balance, oneEther * 2)
+
+    try {
+    await campaign.methods.disburseFunds().send({
+      from: accounts[0],
+      gas: '3000000'
+    })
+      assert(false)
+    } catch(err) {
+      assert(err)
+    }
   })
 })
 

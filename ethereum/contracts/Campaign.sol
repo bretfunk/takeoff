@@ -39,7 +39,7 @@ contract CampaignFactory {
       owner = _owner;
       description = _description;
       moneyGoal = _moneyGoal;
-      timeGoal = _timeGoal;
+      timeGoal = _timeGoal * 1 days;
       start = now;
     }
 
@@ -53,7 +53,7 @@ contract CampaignFactory {
       _;
     }
 
-    function disperseFunds() public payable timeCheck {
+    function disburseFunds() public payable timeCheck {
       uint fee = balance / 100;
       if (balance >= moneyGoal) {
         // get out 2% fee and gas money
