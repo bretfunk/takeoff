@@ -1,2 +1,2 @@
 # takeoff
-### Blockchain crowdfunding app that uses IPFS for data storage.  
+### Blockchain crowdfunding app built with Solidity, Web3, React.js, Next.js and IPFS.
