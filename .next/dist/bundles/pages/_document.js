@@ -67,25 +67,24 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "/Volumes/code/blockchain/takeoff/node_modules/next/dist/pages/_document.js":
+/***/ 20:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(21);
+
+
+/***/ }),
+
+/***/ 21:
 /***/ (function(module, exports) {
 
 module.exports = require("/Volumes/code/blockchain/takeoff/node_modules/next/dist/pages/_document.js");
 
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("/Volumes/code/blockchain/takeoff/node_modules/next/dist/pages/_document.js");
-
-
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map
