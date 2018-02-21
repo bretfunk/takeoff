@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/campaigns/show', function() {
           var comp = 
-      webpackJsonp([4],{
+      webpackJsonp([5],{
 
 /***/ "./components/ContributeForm.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -114942,14 +114942,6 @@ module.exports = routes;
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/campaigns/show.js");
-
-
-/***/ }),
-
 /***/ 3:
 /***/ (function(module, exports) {
 
@@ -114976,9 +114968,17 @@ module.exports = __webpack_require__("./pages/campaigns/show.js");
 
 /* (ignored) */
 
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./pages/campaigns/show.js");
+
+
 /***/ })
 
-},[2])
+},[9])
           return { page: comp.default }
         })
       ;
