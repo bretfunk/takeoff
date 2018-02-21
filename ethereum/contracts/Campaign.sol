@@ -71,6 +71,19 @@ contract CampaignFactory {
       }
     }
 
+    function getSummary() public view returns (
+      address, string, uint, uint, uint, uint
+    ) {
+      return (
+    owner,
+    description,
+    moneyGoal,
+    timeGoal,
+    balance,
+    start
+      );
+    }
+
     // function ownerBalance() public view returns(uint) {
     //     return owner.balance;
     // }
