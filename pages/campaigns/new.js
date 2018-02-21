@@ -68,7 +68,7 @@ class New extends Component {
                         content={this.state.errorMessage}
                       />
                       <Button
-                        primary
+                        color='black'
                         loading={this.state.loading}
                       >
                         Create

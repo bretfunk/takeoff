@@ -22,7 +22,7 @@ export default () => {
       </Link>
       <Link route="/">
         <a className="item">
-          All Campaigns
+          Campaigns
         </a>
       </Link>
       <Link route="/campaigns/new">

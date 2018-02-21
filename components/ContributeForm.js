@@ -44,7 +44,7 @@ class ContributeForm extends Component {
         </Form.Field>
         <Message error header="Error!" content={this.state.error} />
         <Button
-          primary
+          color='black'
           loading={this.state.loading}
         >
           Contribute

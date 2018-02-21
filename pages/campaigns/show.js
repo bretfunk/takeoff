@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Grid } from 'semantic-ui-react';
+import { Image, Card, Grid } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
@@ -77,8 +77,14 @@ class Show extends Component {
       render() {
         return(
           <Layout>
-            <h1>Show</h1>
             <Grid>
+              <Grid.Row>
+                <Image
+                  src={`https://robohash.org/${Math.ceil(Math.random() * 100)}`}
+                  centered
+                >
+                </Image>
+              </Grid.Row>
               <Grid.Row>
               <Grid.Column width={10}>
             {this.renderData()}

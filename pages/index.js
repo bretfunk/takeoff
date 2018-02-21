@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Card, Button, Icon, Image } from 'semantic-ui-react';
+import { Card, Button, Icon } from 'semantic-ui-react';
 import factory from '../ethereum/factory';
 import Layout from '../components/Layout.js';
 import { Link } from '../routes';
 import Campaign from '../ethereum/campaign';
+import Jumbotron from '../components/Jumbotron';
 
 class CampaignIndex extends Component {
   static async getInitialProps() {
@@ -31,17 +32,11 @@ class CampaignIndex extends Component {
 
   renderCampaigns() {
     const items = this.props.array.map((data, index) => {
-          //owner:        campaign[0],
-          //description:  campaign[1],
-          //moneyGoal:    campaign[2],
-          //timeGoal:     campaign[3],
-          //balance:      campaign[4],
-          //start:        campaign[5]
       return {
         key: index,
         image: `https://robohash.org/${ Math.ceil(Math.random() * 100)}`,
-        header: this.props.campaigns[index],
-        meta: data.description,
+        header: data.description,
+        meta: `Goal: ${data.moneyGoal} wei`,
         description: (
           <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
@@ -55,12 +50,7 @@ class CampaignIndex extends Component {
   render() {
     return (
       <Layout>
-        <Image
-          src='https://wallscover.com/images/cool-6.jpg'
-          //size='large'
-          fluid
-          centered
-        />
+        <Jumbotron mainText="Takeoff" subText="Blockchain Crowdfunding Made Easy" />
         <h3>Open Campaigns</h3>
         <Link route="/campaigns/new">
           <a>

@@ -228,7 +228,7 @@ var ContributeForm = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Button"],
           {
-            primary: true,
+            color: 'black',
             loading: this.state.loading,
             __source: {
               fileName: _jsxFileName,
@@ -329,7 +329,7 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
               lineNumber: 24
             }
           },
-          'All Campaigns'
+          'Campaigns'
         )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -570,21 +570,11 @@ var Show = function (_Component) {
           }
         },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'h1',
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 80
-            }
-          },
-          'Show'
-        ),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"],
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 81
+              lineNumber: 80
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -592,14 +582,31 @@ var Show = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
+                lineNumber: 81
+              }
+            },
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Image"], {
+              src: 'https://robohash.org/' + Math.ceil(Math.random() * 100),
+              centered: true,
+              __source: {
+                fileName: _jsxFileName,
                 lineNumber: 82
+              }
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Row,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 88
               }
             },
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 10, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 83
+                  lineNumber: 89
                 }
               },
               this.renderData()
@@ -608,12 +615,12 @@ var Show = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 6, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 86
+                  lineNumber: 92
                 }
               },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 87
+                  lineNumber: 93
                 }
               })
             )
