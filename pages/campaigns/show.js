@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
+import ContributeForm from '../../components/ContributeForm';
 
 class Show extends Component {
   static async getInitialProps(props) {
@@ -10,6 +11,7 @@ class Show extends Component {
     const summary = await campaign.methods.getSummary().call();
 
     return {
+      address: props.query.address,
       owner:        summary[0],
       description:  summary[1],
       moneyGoal:    summary[2],
@@ -76,7 +78,16 @@ class Show extends Component {
         return(
           <Layout>
             <h1>Show</h1>
+            <Grid>
+              <Grid.Row>
+              <Grid.Column width={10}>
             {this.renderData()}
+              </Grid.Column>
+              <Grid.Column width={6}>
+            <ContributeForm address={this.props.address} />
+              </Grid.Column>
+            </Grid.Row>
+            </Grid>
           </Layout>
         )
       }
