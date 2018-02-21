@@ -6,9 +6,9 @@
   "scripts": {
     "test": "mocha",
     "dev": "node server.js",
+    "build": "next build",
     "start": "next start -p $PORT",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "next build"
+    "heroku-postbuild": "npm run build"
   },
   "author": "Bret Funk",
   "license": "ISC",
