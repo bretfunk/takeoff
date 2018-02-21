@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -235,7 +235,7 @@ var ContributeForm = function (_Component) {
               lineNumber: 46
             }
           },
-          'Contribute!'
+          'Contribute'
         )
       );
     }
@@ -266,7 +266,10 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"],
-    { style: { marginTop: '10px' }, __source: {
+    {
+      inverted: true,
+      style: { marginTop: '10px' },
+      __source: {
         fileName: _jsxFileName,
         lineNumber: 7
       }
@@ -275,14 +278,14 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
       __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
       { route: '/', __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 11
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'a',
         { className: 'item', __source: {
             fileName: _jsxFileName,
-            lineNumber: 9
+            lineNumber: 12
           }
         },
         'Takeoff'
@@ -292,38 +295,55 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
       __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Menu,
       { position: 'right', __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 17
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
-        { route: '/', __source: {
+        { route: '/about', __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 18
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'a',
           { className: 'item', __source: {
               fileName: _jsxFileName,
-              lineNumber: 16
+              lineNumber: 19
             }
           },
-          'Campaigns'
+          'About'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
+        { route: '/', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 23
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { className: 'item', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 24
+            }
+          },
+          'All Campaigns'
         )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
         { route: '/campaigns/new', __source: {
             fileName: _jsxFileName,
-            lineNumber: 20
+            lineNumber: 28
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'a',
           { className: 'item', __source: {
               fileName: _jsxFileName,
-              lineNumber: 21
+              lineNumber: 29
             }
           },
           '+'
@@ -568,26 +588,35 @@ var Show = function (_Component) {
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
-            { width: 10, __source: {
+            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Row,
+            {
+              __source: {
                 fileName: _jsxFileName,
                 lineNumber: 82
               }
             },
-            this.renderData()
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
-            { width: 6, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 85
-              }
-            },
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 86
-              }
-            })
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
+              { width: 10, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 83
+                }
+              },
+              this.renderData()
+            ),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
+              { width: 6, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 86
+                }
+              },
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 87
+                }
+              })
+            )
           )
         )
       );
@@ -647,12 +676,13 @@ var routes = __webpack_require__("next-routes")();
 
 routes.add('/campaigns/new', '/campaigns/new');
 routes.add('/campaigns/:address', '/campaigns/show');
+routes.add('/about', '/about');
 
 module.exports = routes;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/campaigns/show.js");

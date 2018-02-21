@@ -4,7 +4,10 @@ import { Link } from '../routes';
 
 export default () => {
   return (
-    <Menu style={{ marginTop: '10px' }}>
+    <Menu
+      inverted
+      style={{ marginTop: '10px' }}
+    >
       <Link route="/">
         <a className="item">
           Takeoff
@@ -12,9 +15,14 @@ export default () => {
       </Link>
 
       <Menu.Menu position="right">
+      <Link route="/about">
+        <a className="item">
+          About
+        </a>
+      </Link>
       <Link route="/">
         <a className="item">
-          Campaigns
+          All Campaigns
         </a>
       </Link>
       <Link route="/campaigns/new">
