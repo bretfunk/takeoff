@@ -7,36 +7,46 @@ import Campaign from '../ethereum/campaign';
 
 class CampaignIndex extends Component {
   static async getInitialProps() {
+    const array = []
     const campaigns = await factory.methods.allCampaigns().call();
-    const campaign = await Campaign(campaigns[0])
-    const campaignData = await campaign.methods.getSummary().call();
-
-    const test = (campaigns) => {
-      const promises = campaigns.map(async (address) => {
-        return {
-          myValue:  await address
-          //Campaign(address)
+    for (let i = 0; i < campaigns.length; i++) {
+      try {
+        const campaign = await Campaign(campaigns[i]).methods.getSummary().call();
+        const newCampaign = {
+          owner:        campaign[0],
+          description:  campaign[1],
+          moneyGoal:    campaign[2],
+          timeGoal:     campaign[3],
+          balance:      campaign[4],
+          start:        campaign[5]
         }
-      });
-      return Promise.all(promises);
+        array.push(newCampaign)
+      } catch (err) {
+        console.log(err);
+      }
     }
 
-    return { campaigns, campaign, campaignData, test };
+    return { campaigns, array };
   }
 
   renderCampaigns() {
-    debugger
-    const items = this.props.campaigns.map(address => {
+    const items = this.props.array.map((data, index) => {
+          //owner:        campaign[0],
+          //description:  campaign[1],
+          //moneyGoal:    campaign[2],
+          //timeGoal:     campaign[3],
+          //balance:      campaign[4],
+          //start:        campaign[5]
       return {
-        //image: 'https://robohash.org/1',
-        header: address,
-        //meta: address,
+        key: index,
+        image: `https://robohash.org/${ Math.ceil(Math.random() * 100)}`,
+        header: this.props.campaigns[index],
+        meta: data.description,
         description: (
-          <Link route={`/campaigns/${address}`}>
+          <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
           </Link>
         ),
-        //fluid: true
       }
     })
     return <Card.Group items={items} />;
@@ -58,7 +68,7 @@ class CampaignIndex extends Component {
               floated="right"
               content="Create Campaign"
               icon="add"
-              primary
+              color="black"
             />
           </a>
         </Link>
