@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/campaigns/show', function() {
           var comp = 
-      webpackJsonp([4],{
+      webpackJsonp([5],{
 
 /***/ "./components/ContributeForm.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -172,7 +172,7 @@ var ContributeForm = function (_Component) {
               lineNumber: 46
             }
           },
-          'Contribute!'
+          'Contribute'
         )
       );
     }
@@ -114782,26 +114782,35 @@ var Show = function (_Component) {
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["e" /* Grid */].Column,
-            { width: 10, __source: {
+            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["e" /* Grid */].Row,
+            {
+              __source: {
                 fileName: _jsxFileName,
                 lineNumber: 82
               }
             },
-            this.renderData()
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["e" /* Grid */].Column,
-            { width: 6, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 85
-              }
-            },
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 86
-              }
-            })
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["e" /* Grid */].Column,
+              { width: 10, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 83
+                }
+              },
+              this.renderData()
+            ),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["e" /* Grid */].Column,
+              { width: 6, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 86
+                }
+              },
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 87
+                }
+              })
+            )
           )
         )
       );
@@ -114933,14 +114942,6 @@ module.exports = routes;
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/campaigns/show.js");
-
-
-/***/ }),
-
 /***/ 3:
 /***/ (function(module, exports) {
 
@@ -114967,9 +114968,17 @@ module.exports = __webpack_require__("./pages/campaigns/show.js");
 
 /* (ignored) */
 
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./pages/campaigns/show.js");
+
+
 /***/ })
 
-},[2])
+},[7])
           return { page: comp.default }
         })
       ;
