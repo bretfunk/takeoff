@@ -21,6 +21,13 @@ class Show extends Component {
     }
   }
 
+  dateFormat(date) {
+    debugger
+    const newDate = new Date(Date(date));
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return newDate.toLocaleDateString(`${navigator.language}`, options)
+  }
+
   renderData() {
     const {
       owner,
@@ -35,68 +42,68 @@ class Show extends Component {
       {
         header: owner,
         meta: "Address of Owner",
-        description: "Manager owns the contract",
+        //description: "Manager owns the contract",
         style: { overflowWrap: 'break-word' }
       },
       {
         header: description,
         meta: "Description",
-        description: "Description of the crowdfulding campaign",
+        //description: "Description of the crowdfulding campaign",
 
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: moneyGoal,
-        meta: "Money Goal (wei)",
-        description: "Amount needed to start campaign.",
+        header: web3.utils.fromWei(moneyGoal, 'ether'),
+        meta: "Money Goal (ether)",
+        //description: "Amount needed to start campaign.",
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: timeGoal,
+        header: `${timeGoal / 60 / 60 / 12} days`,
         meta: "Time Goal",
-        description: "Time needed to raise money",
+        //description: "Time needed to raise money",
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: balance,
-        meta: "Amount Raised",
-        description: "Amount raised so far",
+        header: web3.utils.fromWei(balance, 'ether'),
+        meta: "Ether Raised",
+        //description: "Ether raised so far",
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: start,
+        header: this.dateFormat(start),
         meta: "Time the contract started",
-        description: "Time remaining to raise money",
+        //description: "Time remaining to raise money",
         style: { overflowWrap: 'break-word' }
       }
     ]
 
     return <Card.Group items={items} />;
-      }
+  }
 
-      render() {
-        return(
-          <Layout>
-            <Grid>
-              <Grid.Row>
-                <Image
-                  src={`https://robohash.org/${Math.ceil(Math.random() * 100)}`}
-                  centered
-                >
-                </Image>
-              </Grid.Row>
-              <Grid.Row>
-              <Grid.Column width={10}>
-            {this.renderData()}
-              </Grid.Column>
-              <Grid.Column width={6}>
-            <ContributeForm address={this.props.address} />
-              </Grid.Column>
-            </Grid.Row>
-            </Grid>
-          </Layout>
-        )
-      }
-      }
+  render() {
+    return(
+      <Layout>
+        <Grid>
+          <Grid.Row>
+            <Image
+              src={`https://robohash.org/${Math.ceil(Math.random() * 100)}`}
+              centered
+            >
+            </Image>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              {this.renderData()}
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <ContributeForm address={this.props.address} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Layout>
+    )
+  }
+}
 
-      export default Show;
+export default Show;

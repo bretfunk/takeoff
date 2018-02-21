@@ -5,6 +5,7 @@ import Layout from '../components/Layout.js';
 import { Link } from '../routes';
 import Campaign from '../ethereum/campaign';
 import Jumbotron from '../components/Jumbotron';
+import web3 from '../ethereum/web3';
 
 class CampaignIndex extends Component {
   static async getInitialProps() {
@@ -36,7 +37,7 @@ class CampaignIndex extends Component {
         key: index,
         image: `https://robohash.org/${ Math.ceil(Math.random() * 100)}`,
         header: data.description,
-        meta: `Goal: ${data.moneyGoal} wei`,
+        meta: `Goal: ${web3.utils.fromWei(data.moneyGoal, 'ether')} ether`,
         description: (
           <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
