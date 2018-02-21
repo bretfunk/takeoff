@@ -228,7 +228,7 @@ var ContributeForm = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Button"],
           {
-            primary: true,
+            color: 'black',
             loading: this.state.loading,
             __source: {
               fileName: _jsxFileName,
@@ -266,7 +266,10 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"],
-    { style: { marginTop: '10px' }, __source: {
+    {
+      inverted: true,
+      style: { marginTop: '10px' },
+      __source: {
         fileName: _jsxFileName,
         lineNumber: 7
       }
@@ -275,14 +278,14 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
       __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
       { route: '/', __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 11
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'a',
         { className: 'item', __source: {
             fileName: _jsxFileName,
-            lineNumber: 9
+            lineNumber: 12
           }
         },
         'Takeoff'
@@ -292,21 +295,38 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
       __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Menu,
       { position: 'right', __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 17
         }
       },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
-        { route: '/', __source: {
+        { route: '/about', __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 18
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'a',
           { className: 'item', __source: {
               fileName: _jsxFileName,
-              lineNumber: 16
+              lineNumber: 19
+            }
+          },
+          'About'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
+        { route: '/', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 23
+          }
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { className: 'item', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 24
             }
           },
           'Campaigns'
@@ -316,14 +336,14 @@ var _jsxFileName = '/Volumes/code/blockchain/takeoff/components/Header.js';
         __WEBPACK_IMPORTED_MODULE_2__routes__["Link"],
         { route: '/campaigns/new', __source: {
             fileName: _jsxFileName,
-            lineNumber: 20
+            lineNumber: 28
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'a',
           { className: 'item', __source: {
               fileName: _jsxFileName,
-              lineNumber: 21
+              lineNumber: 29
             }
           },
           '+'
@@ -488,6 +508,14 @@ var Show = function (_Component) {
   }
 
   _createClass(Show, [{
+    key: 'dateFormat',
+    value: function dateFormat(date) {
+      debugger;
+      var newDate = new Date(Date(date));
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return newDate.toLocaleDateString('' + navigator.language, options);
+    }
+  }, {
     key: 'renderData',
     value: function renderData() {
       var _props = this.props,
@@ -502,39 +530,39 @@ var Show = function (_Component) {
       var items = [{
         header: owner,
         meta: "Address of Owner",
-        description: "Manager owns the contract",
+        //description: "Manager owns the contract",
         style: { overflowWrap: 'break-word' }
       }, {
         header: description,
         meta: "Description",
-        description: "Description of the crowdfulding campaign",
+        //description: "Description of the crowdfulding campaign",
 
         style: { overflowWrap: 'break-word' }
       }, {
-        header: moneyGoal,
-        meta: "Money Goal (wei)",
-        description: "Amount needed to start campaign.",
+        header: __WEBPACK_IMPORTED_MODULE_5__ethereum_web3__["a" /* default */].utils.fromWei(moneyGoal, 'ether'),
+        meta: "Money Goal (ether)",
+        //description: "Amount needed to start campaign.",
         style: { overflowWrap: 'break-word' }
       }, {
-        header: timeGoal,
+        header: timeGoal / 60 / 60 / 12 + ' days',
         meta: "Time Goal",
-        description: "Time needed to raise money",
+        //description: "Time needed to raise money",
         style: { overflowWrap: 'break-word' }
       }, {
-        header: balance,
-        meta: "Amount Raised",
-        description: "Amount raised so far",
+        header: __WEBPACK_IMPORTED_MODULE_5__ethereum_web3__["a" /* default */].utils.fromWei(balance, 'ether'),
+        meta: "Ether Raised",
+        //description: "Ether raised so far",
         style: { overflowWrap: 'break-word' }
       }, {
-        header: start,
+        header: this.dateFormat(start),
         meta: "Time the contract started",
-        description: "Time remaining to raise money",
+        //description: "Time remaining to raise money",
         style: { overflowWrap: 'break-word' }
       }];
 
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Card"].Group, { items: items, __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 81
         }
       });
     }
@@ -546,25 +574,15 @@ var Show = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 86
           }
         },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'h1',
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 80
-            }
-          },
-          'Show'
-        ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"],
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 81
+              lineNumber: 87
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -572,14 +590,38 @@ var Show = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 82
+                lineNumber: 88
               }
             },
+<<<<<<< HEAD
+=======
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Image"], {
+              src: 'https://robohash.org/' + Math.ceil(Math.random() * 100),
+              centered: true,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 89
+              }
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Row,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 95
+              }
+            },
+>>>>>>> styling
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 10, __source: {
                   fileName: _jsxFileName,
+<<<<<<< HEAD
                   lineNumber: 83
+=======
+                  lineNumber: 96
+>>>>>>> styling
                 }
               },
               this.renderData()
@@ -588,12 +630,20 @@ var Show = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 6, __source: {
                   fileName: _jsxFileName,
+<<<<<<< HEAD
                   lineNumber: 86
+=======
+                  lineNumber: 99
+>>>>>>> styling
                 }
               },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
                   fileName: _jsxFileName,
+<<<<<<< HEAD
                   lineNumber: 87
+=======
+                  lineNumber: 100
+>>>>>>> styling
                 }
               })
             )
@@ -656,6 +706,7 @@ var routes = __webpack_require__("next-routes")();
 
 routes.add('/campaigns/new', '/campaigns/new');
 routes.add('/campaigns/:address', '/campaigns/show');
+routes.add('/about', '/about');
 
 module.exports = routes;
 
