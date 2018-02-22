@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -498,6 +498,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var ipfsRobots = {
+  1: 'QmfYYYg1Paby4mECH2yTsGBn2R6dozgKxQXyWyzpJnRw6Z',
+  2: 'QmakNLERtb7EZqW52RXEq4XQehnCc3QuExoLKLVyswbpo5',
+  3: 'QmTWBvURDMqSjQ5T1yq81MP4DfoM7nDSq8sMFdHFJYR5XX',
+  4: 'QmSkxgvuB5Pc72guDbbEHbUtKsoAx9cqWba1nueAeFHELi',
+  5: 'Qmb195T3ZNJ2WjdjGz2UqKAZZZwVeb3DwUarfwRUC9kzkc',
+  6: 'QmeWWWQEypzoe8HQrUjTeLWf7WPfuQ47RKkTvTssKKYsug',
+  7: 'QmNwHbZGsgCYcxQsabjcRn7MtRh3kvD5aYzMb4oXrwKaLr',
+  8: 'QmcS4wbQtzW3NT9taTs8etjU8JaMxz1p1R5fVZ8dUfJiW9',
+  9: 'QmSPGvxYbP9pA4snFqjwXuTrGgDRhvWAaPRj2AJWG6iUAT',
+  10: 'QmfCvdhq5Qo8pDtS4YdVUj5WGKEPSf6hQPoSbxChM2q4i3'
+};
+
 var Show = function (_Component) {
   _inherits(Show, _Component);
 
@@ -510,10 +523,19 @@ var Show = function (_Component) {
   _createClass(Show, [{
     key: 'dateFormat',
     value: function dateFormat(date) {
-      debugger;
       var newDate = new Date(Date(date));
       var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       return newDate.toLocaleDateString('' + navigator.language, options);
+    }
+  }, {
+    key: 'daysLeft',
+    value: function daysLeft(start, timeGoal) {
+      var timeGoalWithMilli = parseInt(timeGoal) * 1000;
+      var startTimeWithMilli = parseInt(start) * 1000;
+      var goalDate = startTimeWithMilli + timeGoalWithMilli;
+      var startDate = startTimeWithMilli;
+      var distance = goalDate - startDate;
+      return Math.ceil(distance / 60 / 60 / 1000);
     }
   }, {
     key: 'renderData',
@@ -529,43 +551,39 @@ var Show = function (_Component) {
 
       var items = [{
         header: owner,
-        meta: "Address of Owner",
-        //description: "Manager owns the contract",
+        meta: "Owner Address",
         style: { overflowWrap: 'break-word' }
       }, {
         header: description,
         meta: "Description",
-        //description: "Description of the crowdfulding campaign",
-
         style: { overflowWrap: 'break-word' }
       }, {
         header: __WEBPACK_IMPORTED_MODULE_5__ethereum_web3__["a" /* default */].utils.fromWei(moneyGoal, 'ether'),
         meta: "Money Goal (ether)",
-        //description: "Amount needed to start campaign.",
         style: { overflowWrap: 'break-word' }
       }, {
-        header: timeGoal / 60 / 60 / 12 + ' days',
+        header: timeGoal / 60 / 60 / 24 + ' days',
         meta: "Time Goal",
-        //description: "Time needed to raise money",
         style: { overflowWrap: 'break-word' }
       }, {
         header: __WEBPACK_IMPORTED_MODULE_5__ethereum_web3__["a" /* default */].utils.fromWei(balance, 'ether'),
         meta: "Ether Raised",
-        //description: "Ether raised so far",
         style: { overflowWrap: 'break-word' }
       }, {
-        header: this.dateFormat(start),
-        meta: "Time the contract started",
-        //description: "Time remaining to raise money",
+        header: this.daysLeft(start, timeGoal),
+        meta: "Hours left",
         style: { overflowWrap: 'break-word' }
       }];
 
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Card"].Group, { items: items, __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 95
         }
       });
     }
+
+    //src='https://ipfs.io/ipfs/QmfYYYg1Paby4mECH2yTsGBn2R6dozgKxQXyWyzpJnRw6Z'
+
   }, {
     key: 'render',
     value: function render() {
@@ -574,7 +592,7 @@ var Show = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 86
+            lineNumber: 101
           }
         },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -582,7 +600,7 @@ var Show = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 87
+              lineNumber: 102
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -590,17 +608,15 @@ var Show = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 88
+                lineNumber: 103
               }
             },
-<<<<<<< HEAD
-=======
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Image"], {
               src: 'https://robohash.org/' + Math.ceil(Math.random() * 100),
               centered: true,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 89
+                lineNumber: 104
               }
             })
           ),
@@ -609,19 +625,14 @@ var Show = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 95
+                lineNumber: 110
               }
             },
->>>>>>> styling
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 10, __source: {
                   fileName: _jsxFileName,
-<<<<<<< HEAD
-                  lineNumber: 83
-=======
-                  lineNumber: 96
->>>>>>> styling
+                  lineNumber: 111
                 }
               },
               this.renderData()
@@ -630,20 +641,12 @@ var Show = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 6, __source: {
                   fileName: _jsxFileName,
-<<<<<<< HEAD
-                  lineNumber: 86
-=======
-                  lineNumber: 99
->>>>>>> styling
+                  lineNumber: 114
                 }
               },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ContributeForm__["a" /* default */], { address: this.props.address, __source: {
                   fileName: _jsxFileName,
-<<<<<<< HEAD
-                  lineNumber: 87
-=======
-                  lineNumber: 100
->>>>>>> styling
+                  lineNumber: 115
                 }
               })
             )
@@ -712,7 +715,7 @@ module.exports = routes;
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/campaigns/show.js");
