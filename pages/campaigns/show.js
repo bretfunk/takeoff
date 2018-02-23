@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
+import DisburseFundsButton from '../../components/DisburseFundsButton';
 
 class Show extends Component {
   static async getInitialProps(props) {
@@ -25,7 +26,8 @@ class Show extends Component {
     debugger
     const newDate = new Date(Date(date));
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return newDate.toLocaleDateString(`${navigator.language}`, options)
+    return newDate
+    //return newDate.toLocaleDateString(`${navigator.language}`, options)
   }
 
   renderData() {
@@ -87,7 +89,7 @@ class Show extends Component {
         <Grid>
           <Grid.Row>
             <Image
-              src={`https://robohash.org/${Math.ceil(Math.random() * 100)}`}
+              src={`https://picsum.photos/600/400?image=${Math.ceil(Math.random() * 100)}`}
               centered
             >
             </Image>
@@ -97,7 +99,12 @@ class Show extends Component {
               {this.renderData()}
             </Grid.Column>
             <Grid.Column width={6}>
-              <ContributeForm address={this.props.address} />
+              <Grid.Row>
+                <ContributeForm address={this.props.address} />
+              </Grid.Row>
+              <Grid.Row style={{ marginTop: '50px' }}>
+                <DisburseFundsButton address={this.props.address} />
+              </Grid.Row>
             </Grid.Column>
           </Grid.Row>
         </Grid>
