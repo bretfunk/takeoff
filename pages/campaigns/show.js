@@ -22,11 +22,12 @@ class Show extends Component {
     }
   }
 
-  dateFormat(date) {
-    debugger
-    const newDate = new Date(Date(date));
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return newDate.toLocaleDateString(`${navigator.language}`, options)
+  countdown(start, target) {
+    const startWithMilli = parseInt(start) * 1000
+    const targetWithMilli = parseInt(target) * 1000
+    const diff = startWithMilli + targetWithMilli - Date.now()
+    const hoursLeft = diff / 60 / 60 / 1000
+    return hoursLeft.toFixed(1)
   }
 
   renderData() {
@@ -43,39 +44,32 @@ class Show extends Component {
       {
         header: owner,
         meta: "Address of Owner",
-        //description: "Manager owns the contract",
         style: { overflowWrap: 'break-word' }
       },
       {
         header: description,
         meta: "Description",
-        //description: "Description of the crowdfulding campaign",
-
         style: { overflowWrap: 'break-word' }
       },
       {
         header: web3.utils.fromWei(moneyGoal, 'ether'),
         meta: "Money Goal (ether)",
-        //description: "Amount needed to start campaign.",
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: `${timeGoal / 60 / 60 / 12} days`,
+        header: `${timeGoal / 60 / 60 / 24} days`,
         meta: "Time Goal",
-        //description: "Time needed to raise money",
         style: { overflowWrap: 'break-word' }
       },
       {
         header: web3.utils.fromWei(balance, 'ether'),
         meta: "Ether Raised",
-        //description: "Ether raised so far",
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: this.dateFormat(start),
-        meta: "Time the contract started",
-        //description: "Time remaining to raise money",
-        style: { overflowWrap: 'break-word' }
+        header: this.countdown(start, timeGoal),
+        meta: "Hours Remaining",
+        style: { overflowWrap: 'break-word', color: 'red' }
       }
     ]
 
