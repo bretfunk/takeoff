@@ -26,8 +26,7 @@ class Show extends Component {
     debugger
     const newDate = new Date(Date(date));
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return newDate
-    //return newDate.toLocaleDateString(`${navigator.language}`, options)
+    return newDate.toLocaleDateString(`${navigator.language}`, options)
   }
 
   renderData() {
