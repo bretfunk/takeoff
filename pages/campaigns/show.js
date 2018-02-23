@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
+import DisburseFundsButton from '../../components/DisburseFundsButton';
 
   const ipfsRobots = {
     1: 'QmfYYYg1Paby4mECH2yTsGBn2R6dozgKxQXyWyzpJnRw6Z',
@@ -102,7 +103,7 @@ class Show extends Component {
         <Grid>
           <Grid.Row>
             <Image
-              src={`https://robohash.org/${Math.ceil(Math.random() * 100)}`}
+              src={`https://picsum.photos/600/400?image=${Math.ceil(Math.random() * 100)}`}
               centered
             >
             </Image>
@@ -112,7 +113,12 @@ class Show extends Component {
               {this.renderData()}
             </Grid.Column>
             <Grid.Column width={6}>
-              <ContributeForm address={this.props.address} />
+              <Grid.Row>
+                <ContributeForm address={this.props.address} />
+              </Grid.Row>
+              <Grid.Row style={{ marginTop: '50px' }}>
+                <DisburseFundsButton address={this.props.address} />
+              </Grid.Row>
             </Grid.Column>
           </Grid.Row>
         </Grid>

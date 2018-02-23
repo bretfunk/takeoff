@@ -35,7 +35,7 @@ class CampaignIndex extends Component {
     const items = this.props.array.map((data, index) => {
       return {
         key: index,
-        image: `https://robohash.org/${ Math.ceil(Math.random() * 100)}`,
+        image: `https://picsum.photos/300/200?image=${ Math.ceil(Math.random() * 100)}`,
         header: data.description,
         meta: `Goal: ${web3.utils.fromWei(data.moneyGoal, 'ether')} ether`,
         description: (

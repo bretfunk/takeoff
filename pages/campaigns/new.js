@@ -47,7 +47,7 @@ class New extends Component {
               onChange={event =>
                   this.setState({ description: event.target.value })}
                 />
-                <label>Amount</label>
+                <label>Financial Goal</label>
                 <Input
                   label="wei"
                   labelPosition="right"
@@ -55,7 +55,7 @@ class New extends Component {
                   onChange={event =>
                       this.setState({ moneyGoal: event.target.value })}
                     />
-                    <label>Days Needed</label>
+                    <label>Days Needed To Reach Financial Goal</label>
                     <Input
                       value={this.state.timeGoal}
                       onChange={event =>
