@@ -37,7 +37,7 @@ class CampaignIndex extends Component {
         key: index,
         image: `https://picsum.photos/300/200?image=${ Math.ceil(Math.random() * 100)}`,
         header: data.description,
-        meta: `Goal: ${web3.utils.fromWei(data.moneyGoal, 'ether')} ether`,
+        meta: `Target Goal: ${web3.utils.fromWei(data.moneyGoal, 'ether')} ether \n Remaining: ${this.countdown(data.start, data.timeGoal)} hours`,
         description: (
           <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
@@ -46,6 +46,14 @@ class CampaignIndex extends Component {
       }
     })
     return <Card.Group items={items} />;
+  }
+
+  countdown(start, target) {
+    const startWithMilli = parseInt(start) * 1000
+    const targetWithMilli = parseInt(target) * 1000
+    const diff = startWithMilli + targetWithMilli - Date.now()
+    const hoursLeft = diff / 60 / 60 / 1000
+    return hoursLeft.toFixed(1)
   }
 
   render() {
