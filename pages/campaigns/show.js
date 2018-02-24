@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Card, Grid } from 'semantic-ui-react';
+import { Container, Image, Card, Grid } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
@@ -27,7 +27,9 @@ class Show extends Component {
     const targetWithMilli = parseInt(target) * 1000
     const diff = startWithMilli + targetWithMilli - Date.now()
     const hoursLeft = diff / 60 / 60 / 1000
-    return hoursLeft.toFixed(1)
+    let output;
+    hoursLeft < 0 ? output = 0 :  output = hoursLeft.toFixed(1)
+    return output;
   }
 
   renderData() {
@@ -77,32 +79,30 @@ class Show extends Component {
   }
 
   render() {
-    return(
-      <Layout>
-        <Grid>
-          <Grid.Row>
-            <Image
-              src={`https://picsum.photos/600/400?image=${Math.ceil(Math.random() * 100)}`}
-              centered
-            >
-            </Image>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={10}>
-              {this.renderData()}
-            </Grid.Column>
-            <Grid.Column width={6}>
-              <Grid.Row>
-                <ContributeForm address={this.props.address} />
-              </Grid.Row>
-              <Grid.Row style={{ marginTop: '50px' }}>
-                <DisburseFundsButton address={this.props.address} />
-              </Grid.Row>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Layout>
-    )
+    let button;
+
+    this.countdown(this.props.start, this.props.timeGoal) <= 0 ?
+      button = <DisburseFundsButton address={this.props.address} /> :
+      button = <ContributeForm address={this.props.address} />
+
+      return(
+        <Layout>
+          <Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={10}>
+                {this.renderData()}
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Grid.Row>
+                  {button}
+                </Grid.Row>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
+        </Layout>
+      )
   }
 }
 
