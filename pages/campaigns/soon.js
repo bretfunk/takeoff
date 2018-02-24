@@ -64,17 +64,6 @@ class Soon extends Component {
     return (
       <Layout>
         <h3>About To Expire</h3>
-        <Link route="/campaigns/new">
-          <a>
-            <Button
-              floated="right"
-              content="Create Campaign"
-              icon="add"
-              color="black"
-            />
-          </a>
-        </Link>
-
         {this.renderCampaigns()}
       </Layout>
     )
