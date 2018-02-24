@@ -58,7 +58,7 @@ class Editor extends Component {
       return data.meta.split(' ')[0] !== '0'
     })
 
-    for(let i = 0; i < 2; i++) {
+    for(let i = 0; i < 3; i++) {
       editorPicks.push(activeItems[Math.floor(Math.random()*activeItems.length)]);
     }
     return <Card.Group items={editorPicks} />;

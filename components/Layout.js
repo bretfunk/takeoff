@@ -7,54 +7,24 @@ import Jumbotron from './Jumbotron';
 import { Router } from '../routes'
 
 export default (props) => {
-  let header;
-  //this errors out on the server
-  if (Router.pathname == '/') {
-  //if (true) {
-    header =
-      <div>
-        <Head>
-          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
-        </Head>
-        <Container>
-          <Header />
-          <Jumbotron mainText="Takeoff" subText="Blockchain Crowdfunding Made Easy" />
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={14}>
-                {props.children}
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Links />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </div>
-  } else {
-    header =
-      <div>
-        <Head>
-          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
-        </Head>
-        <Container>
-          <Header />
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={14}>
-                {props.children}
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Links />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </div>
-  }
   return (
     <div>
-      {header}
+        <Head>
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
+        </Head>
+        <Container>
+          <Header />
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={14}>
+                {props.children}
+              </Grid.Column>
+              <Grid.Column width={2}>
+                <Links />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
     </div>
   )
 }
