@@ -27,16 +27,20 @@ export default () => {
         </a>
       </Link>
       <Menu.Menu position="right">
-      <Link route="/">
-        <a className="item">
-          Campaigns
-        </a>
-      </Link>
       <Link route="/campaigns/new">
         <Icon
           link
           inverted
           name="plus"
+          size="large"
+          bordered
+        />
+      </Link>
+      <Link route="/campaigns/active">
+        <Icon
+          link
+          inverted
+          name="search"
           size="large"
           bordered
         />
@@ -50,20 +54,29 @@ export default () => {
           bordered
         />
       </Link>
-      <Link route="/campaigns/soon">
-        <Icon
-          link
-          inverted
-          name="hourglass half"
-          size="large"
-          bordered
-        />
-      </Link>
       <Link route="/campaigns/editors">
         <Icon
           link
           inverted
           name="thumbs up"
+          size="large"
+          bordered
+        />
+      </Link>
+      <Link route="/campaigns/brand-new">
+        <Icon
+          link
+          inverted
+          name="hourglass full"
+          size="large"
+          bordered
+        />
+      </Link>
+      <Link route="/campaigns/soon">
+        <Icon
+          link
+          inverted
+          name="hourglass half"
           size="large"
           bordered
         />
