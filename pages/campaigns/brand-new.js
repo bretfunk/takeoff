@@ -46,6 +46,7 @@ class BrandNew extends Component {
         image: `https://picsum.photos/300/200?image=${ Math.ceil(Math.random() * 100)}`,
         header: data.description,
         meta: `${this.countdown(data.start, data.timeGoal)} hours remaining`,
+        start: data.start,
         description: (
           <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
@@ -54,7 +55,7 @@ class BrandNew extends Component {
       }
     })
     const activeItems = allItems.filter((data) => {
-      return parseInt(data.start) * 1000 < ((parseInt(data.start) * 1000) + (60 * 60 * 24 * 1000))
+      return Date.now() < ((parseInt(data.start) * 1000) + (60 * 60 * 24 * 1000))
     })
     return <Card.Group items={activeItems} />;
   }
