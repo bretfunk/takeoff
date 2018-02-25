@@ -62,7 +62,9 @@ class CampaignIndex extends Component {
       return data.meta.split(' ')[0] !== '0'
     })
 
-    const firstActiveItems = activeItems.splice(0, 3);
+    const randNum = Math.ceil(Math.random() * (activeItems.length - 2));
+    let firstActiveItems = activeItems.splice(randNum, randNum + 3);
+    firstActiveItems = firstActiveItems.splice(0, 3);
     return <Card.Group items={firstActiveItems} centered />;
   }
 

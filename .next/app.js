@@ -90,7 +90,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "af922f5f41c974eff581"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "21df2607de9d7d254fe4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -755,7 +755,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + ({"0":"main.js","1":"bundles/pages/_error.js","2":"commons","6":"bundles/pages/index.js","12":"bundles/pages/campaigns/expired.js"}[chunkId]||chunkId) + "-" + {"0":"f23c952ed152e9333645","1":"dbedf8264eff5ac2eab4","2":"112a70b41bfbcd7c6dde","6":"8d51d0639df10070003a","12":"6064f44c2887d159063e"}[chunkId] + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + ({"0":"main.js","1":"bundles/pages/_error.js","2":"commons","5":"bundles/pages/campaigns/new.js","9":"bundles/pages/campaigns/brand-new.js"}[chunkId]||chunkId) + "-" + {"0":"f23c952ed152e9333645","1":"dbedf8264eff5ac2eab4","2":"112a70b41bfbcd7c6dde","5":"b4b318b8da0bd274c51f","9":"b458330c0f3ddf508eaa"}[chunkId] + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
