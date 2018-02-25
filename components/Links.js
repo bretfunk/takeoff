@@ -5,18 +5,18 @@ import { Link } from '../routes';
 export default (props) => {
   return (
     <div>
-      <Link route="/campaigns/active">
-        <a>
-          <Button
-            content="Active Campaigns"
-            color="black"
-          />
-        </a>
-      </Link>
       <Link route="/campaigns/new">
         <a>
           <Button
             content="Create a Campaign"
+            color="black"
+          />
+        </a>
+      </Link>
+      <Link route="/campaigns/active">
+        <a>
+          <Button
+            content="All Active Campaigns"
             color="black"
             style={{marginTop: '10px'}}
           />
@@ -31,19 +31,28 @@ export default (props) => {
           />
         </a>
       </Link>
-      <Link route="/campaigns/soon">
+      <Link route="/campaigns/editors">
         <a>
           <Button
-            content="Expiring Campaigns"
+            content="Editor's Picks"
             color="black"
             style={{marginTop: '10px'}}
           />
         </a>
       </Link>
-      <Link route="/campaigns/editors">
+      <Link route="/campaigns/brand-new">
         <a>
           <Button
-            content="Editor's Picks"
+            content="New Campaigns"
+            color="black"
+            style={{marginTop: '10px'}}
+          />
+        </a>
+      </Link>
+      <Link route="/campaigns/soon">
+        <a>
+          <Button
+            content="Expiring Campaigns"
             color="black"
             style={{marginTop: '10px'}}
           />
