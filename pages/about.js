@@ -1,5 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import { Icon } from 'semantic-ui-react';
+import { Link } from '../routes';
 
 export default () => {
   return (
