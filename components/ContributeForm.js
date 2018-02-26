@@ -12,36 +12,6 @@ class ContributeForm extends Component {
     loading: false
   }
 
-  sendToBackend = async (campaign, user) => {
-    const getCampaignInfo = await campaign.methods.getSummary().call();
-    const campaignInfo = {
-      owner:        getCampaignInfo[0],
-      description:  getCampaignInfo[1],
-      moneyGoal:    getCampaignInfo[2],
-      timeGoal:     getCampaignInfo[3],
-      balance:      getCampaignInfo[4],
-      start:        getCampaignInfo[5]
-    }
-
-    axios('localhost:8080/api/v1/users/123', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-      credentials: 'same-origin',
-        })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-  }
-
   onSubmit = async event => {
     event.preventDefault();
 
@@ -60,6 +30,25 @@ class ContributeForm extends Component {
       this.setState({ error: error.message });
     }
     this.setState({ loading: false, value: '' });
+  }
+
+  sendToBackend = async (campaign, user) => {
+    const getCampaignInfo = await campaign.methods.getSummary().call();
+    axios.post(`https://takeoff-backend2.herokuapp.com/api/v1/users/${user}`,
+      {
+      owner:        getCampaignInfo[0],
+      description:  getCampaignInfo[1],
+      moneyGoal:    web3.utils.fromWei(getCampaignInfo[2], 'ether'),
+      timeGoal:     getCampaignInfo[3],
+      balance:      web3.utils.fromWei(getCampaignInfo[4], 'ether'),
+      start:        getCampaignInfo[5]
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {

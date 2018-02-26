@@ -27,6 +27,15 @@ export default () => {
         </a>
       </Link>
       <Menu.Menu position="right">
+      <Link route="/campaigns/my">
+        <Icon
+          link
+          inverted
+          name="home"
+          size="large"
+          bordered
+        />
+      </Link>
       <Link route="/campaigns/new">
         <Icon
           link
