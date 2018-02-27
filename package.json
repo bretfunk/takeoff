@@ -13,6 +13,7 @@
   "author": "Bret Funk",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "fs-extra": "^5.0.0",
     "ganache-cli": "^6.0.3",
     "js-ipfs": "0.0.301",

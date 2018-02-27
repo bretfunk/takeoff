@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react';
+import { Segment, Header, Card, Button, Icon } from 'semantic-ui-react';
 import factory from '../../ethereum/factory';
 import Layout from '../../components/Layout.js';
 import { Link } from '../../routes';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
+import usefulMethods from '../../usefulMethods';
 
 class Soon extends Component {
   static async getInitialProps() {
@@ -29,23 +30,13 @@ class Soon extends Component {
     return { campaigns, campaignsArray };
   }
 
-  countdown(start, target) {
-    const startWithMilli = parseInt(start) * 1000
-    const targetWithMilli = parseInt(target) * 1000
-    const diff = startWithMilli + targetWithMilli - Date.now()
-    const hoursLeft = diff / 60 / 60 / 1000
-    let output;
-    hoursLeft < 0 ? output = 0 :  output = hoursLeft.toFixed(1)
-    return output;
-  }
-
   renderCampaigns() {
     const allItems = this.props.campaignsArray.map((data, index) => {
       return {
         key: index,
         image: `https://picsum.photos/300/200?image=${ Math.ceil(Math.random() * 100)}`,
         header: data.description,
-        meta: `${this.countdown(data.start, data.timeGoal)} hours remaining`,
+        meta: `${usefulMethods.countdown(data.start, data.timeGoal)} hours remaining`,
         description: (
           <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
@@ -57,14 +48,16 @@ class Soon extends Component {
       const hours =  parseInt(data.meta.split(' ')[0])
       return hours > 0 && hours < 24
     })
-    return <Card.Group items={activeItems} />;
+    return <Card.Group items={activeItems} centered />;
   }
 
   render() {
     return (
       <Layout>
-        <h3>About To Expire</h3>
-        {this.renderCampaigns()}
+        <Header as='h1' textAlign="center">About To Expire</Header>
+        <Segment>
+          {this.renderCampaigns()}
+        </Segment>
       </Layout>
     )
   }

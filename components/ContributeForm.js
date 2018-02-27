@@ -3,6 +3,7 @@ import { Form, Input, Message, Button } from 'semantic-ui-react';
 import Campaign from '../ethereum/campaign';
 import web3 from '../ethereum/web3';
 import { Router } from '../routes';
+import axios from 'axios';
 
 class ContributeForm extends Component {
   state = {
@@ -23,11 +24,31 @@ class ContributeForm extends Component {
         from: accounts[0],
         value: web3.utils.toWei(this.state.value, 'ether')
       })
+      this.sendToBackend(campaign, accounts[0]);
       Router.replaceRoute(`/campaigns/${this.props.address}`)
     } catch(error) {
       this.setState({ error: error.message });
     }
     this.setState({ loading: false, value: '' });
+  }
+
+  sendToBackend = async (campaign, user) => {
+    const getCampaignInfo = await campaign.methods.getSummary().call();
+    axios.post(`https://takeoff-backend2.herokuapp.com/api/v1/users/${user}`,
+      {
+      owner:        getCampaignInfo[0],
+      description:  getCampaignInfo[1],
+      moneyGoal:    web3.utils.fromWei(getCampaignInfo[2], 'ether'),
+      timeGoal:     getCampaignInfo[3],
+      balance:      web3.utils.fromWei(getCampaignInfo[4], 'ether'),
+      start:        getCampaignInfo[5]
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {

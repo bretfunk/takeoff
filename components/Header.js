@@ -9,7 +9,7 @@ export default () => {
       style={{ marginTop: '10px' }}
     >
       <Link route="/">
-        <a className="item" style={{fontSize:'15px'}}>
+        <a className="item" style={{fontSize:'14px'}}>
           Takeoff
         </a>
       </Link>
@@ -27,6 +27,15 @@ export default () => {
         </a>
       </Link>
       <Menu.Menu position="right">
+      <Link route="/campaigns/my">
+        <Icon
+          link
+          inverted
+          name="home"
+          size="large"
+          bordered
+        />
+      </Link>
       <Link route="/campaigns/new">
         <Icon
           link
