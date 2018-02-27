@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Icon } from 'semantic-ui-react';
+import { Header, Card, Icon } from 'semantic-ui-react';
 import factory from '../../ethereum/factory';
 import Layout from '../../components/Layout.js';
 import { Link } from '../../routes';
@@ -67,7 +67,7 @@ class Editor extends Component {
   render() {
     return (
       <Layout>
-        <h3>Editor's Picks</h3>
+        <Header as='h1' textAlign="center">Editor's Picks</Header>
         {this.renderCampaigns()}
       </Layout>
     )

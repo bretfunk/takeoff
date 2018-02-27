@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react';
+import { Header, Card, Button, Icon } from 'semantic-ui-react';
 import factory from '../../ethereum/factory';
 import Layout from '../../components/Layout.js';
 import { Link } from '../../routes';
@@ -63,7 +63,7 @@ class Soon extends Component {
   render() {
     return (
       <Layout>
-        <h3>About To Expire</h3>
+        <Header as='h1' textAlign="center">About To Expire</Header>
         {this.renderCampaigns()}
       </Layout>
     )

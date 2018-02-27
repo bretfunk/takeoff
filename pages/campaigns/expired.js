@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Icon } from 'semantic-ui-react';
+import { Header, Card, Icon } from 'semantic-ui-react';
 import factory from '../../ethereum/factory';
 import Layout from '../../components/Layout.js';
 import { Link } from '../../routes';
@@ -62,7 +62,7 @@ class Expired extends Component {
   render() {
     return (
       <Layout>
-        <h3>Expired Campaigns</h3>
+        <Header as='h1' textAlign="center">Expired Campaigns</Header>
         {this.renderCampaigns()}
       </Layout>
     )
