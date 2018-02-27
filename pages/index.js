@@ -9,6 +9,7 @@ import web3 from '../ethereum/web3';
 import Links from '../components/Links';
 import Head from 'next/head';
 import Heading from '../components/Header';
+import usefulMethods from '../usefulMethods';
 
 class CampaignIndex extends Component {
   static async getInitialProps() {
@@ -33,23 +34,13 @@ class CampaignIndex extends Component {
     return { campaigns, campaignsArray };
   }
 
-  countdown(start, target) {
-    const startWithMilli = parseInt(start) * 1000
-    const targetWithMilli = parseInt(target) * 1000
-    const diff = startWithMilli + targetWithMilli - Date.now()
-    const hoursLeft = diff / 60 / 60 / 1000
-    let output;
-    hoursLeft < 0 ? output = 0 :  output = hoursLeft.toFixed(1)
-    return output;
-  }
-
   renderCampaigns() {
     const allItems = this.props.campaignsArray.map((data, index) => {
       return {
         key: index,
         image: `https://picsum.photos/300/200?image=${ Math.ceil(Math.random() * 100)}`,
         header: data.description,
-        meta: `${this.countdown(data.start, data.timeGoal)} hours remaining`,
+        meta: `${usefulMethods.countdown(data.start, data.timeGoal)} hours remaining`,
         description: (
           <Link route={`/campaigns/${this.props.campaigns[index]}`}>
             <a>View Campaign</a>
@@ -62,7 +53,7 @@ class CampaignIndex extends Component {
       return data.meta.split(' ')[0] !== '0'
     })
 
-    const randNum = Math.ceil(Math.random() * (activeItems.length - 2));
+    const randNum = Math.ceil(Math.random() * (activeItems.length - 3));
     let firstActiveItems = activeItems.splice(randNum, randNum + 3);
     firstActiveItems = firstActiveItems.splice(0, 3);
     return <Card.Group items={firstActiveItems} centered />;

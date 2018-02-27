@@ -9,7 +9,7 @@ export default () => {
       style={{ marginTop: '10px' }}
     >
       <Link route="/">
-        <a className="item" style={{fontSize:'15px'}}>
+        <a className="item" style={{fontSize:'14px'}}>
           Takeoff
         </a>
       </Link>

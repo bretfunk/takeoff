@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { Header, Card, Button, Icon } from 'semantic-ui-react';
-import factory from '../../ethereum/factory';
+import { Segment, Header, Card, Button, Icon } from 'semantic-ui-react';
 import Layout from '../../components/Layout.js';
-import { Link } from '../../routes';
-import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import axios from 'axios';
+import usefulMethods from '../../usefulMethods';
 
 class My extends Component {
   state = {
     allCampaigns: []
   }
 
-  //componentDidMount() {
-    //this.renderCampaigns
-  //}
+  componentDidMount() {
+    this.renderCampaigns()
+  }
 
   renderCampaigns = () => {
     const accounts = web3.eth.getAccounts()
@@ -27,28 +25,27 @@ class My extends Component {
               const allCampaigns = campaigns.data.map((data, index) => {
                 return {
                   key: index,
+                  meta: `${usefulMethods.countdown(data.start, data.timeGoal)} hours remaining`,
                   image: `https://picsum.photos/300/200?image=${ Math.ceil(Math.random() * 100)}`,
                   header: data.description,
                 }
               })
               this.setState({ allCampaigns })
-              //return allCampaigns
-              //return <Card.Group items={allCampaigns} centered />;
             })
-          debugger
         }
       })
       .catch(function (error) {
         console.log(error);
       });
-    return <Card.Group items={this.state.allCampaigns} centered />;
   }
 
   render() {
     return (
       <Layout>
-        <Header as='h1' textAlign="center">My Campaigns</Header>
-        {this.renderCampaigns()}
+        <Header as='h1' textAlign="center">Contributed</Header>
+        <Segment>
+          <Card.Group items={this.state.allCampaigns} centered />
+        </Segment>
       </Layout>
     )
   }

@@ -5,6 +5,7 @@ import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
 import DisburseFundsButton from '../../components/DisburseFundsButton';
+import usefulMethods from '../../usefulMethods';
 
 class Show extends Component {
   static async getInitialProps(props) {
@@ -20,16 +21,6 @@ class Show extends Component {
       balance:      summary[4],
       start:        summary[5]
     }
-  }
-
-  countdown(start, target) {
-    const startWithMilli = parseInt(start) * 1000
-    const targetWithMilli = parseInt(target) * 1000
-    const diff = startWithMilli + targetWithMilli - Date.now()
-    const hoursLeft = diff / 60 / 60 / 1000
-    let output;
-    hoursLeft < 0 ? output = 0 :  output = hoursLeft.toFixed(1)
-    return output;
   }
 
   renderData() {
@@ -69,13 +60,13 @@ class Show extends Component {
         style: { overflowWrap: 'break-word' }
       },
       {
-        header: this.countdown(start, timeGoal),
+        header: usefulMethods.countdown(start, timeGoal),
         meta: "Hours Remaining",
         style: { overflowWrap: 'break-word', color: 'red' }
       }
     ]
 
-    return <Card.Group items={items} />;
+    return <Card.Group items={items} centered />;
   }
 
   render() {
