@@ -72,7 +72,7 @@ class Show extends Component {
   render() {
     let button;
 
-    this.countdown(this.props.start, this.props.timeGoal) <= 0 ?
+    usefulMethods.countdown(this.props.start, this.props.timeGoal) <= 0 ?
       button = <DisburseFundsButton address={this.props.address} /> :
       button = <ContributeForm address={this.props.address} />
 
